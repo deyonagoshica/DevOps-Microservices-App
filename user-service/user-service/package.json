@@ -1,11 +1,10 @@
 {
   "name": "user-service",
   "version": "1.0.0",
-  "description": "Microservices User Service",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Running automated tests... All tests passed!\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",

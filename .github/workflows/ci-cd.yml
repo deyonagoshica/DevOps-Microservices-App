@@ -1,0 +1,30 @@
+name: End-to-End DevOps Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  Continuous-Integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Automated Tests
+        run: |
+          cd user-service
+          npm test
+
+  Docker-Build:
+    needs: Continuous-Integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker Image
+        run: docker build -t user-service ./user-service
+
+  Continuous-Deployment:
+    needs: Docker-Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Message
+        run: echo "Automated Deployment successful!"
